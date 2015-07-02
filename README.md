@@ -9,6 +9,7 @@ This is a setup guide for SonarQube in production using MySQL as DB.
  
 ### Prerequisite
 **Operating System**: Ubuntu
+
 **Software/Tools**:
 
  - Docker ([official installation guide](https://docs.docker.com/installation/))
