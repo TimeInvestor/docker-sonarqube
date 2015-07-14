@@ -20,23 +20,23 @@ This is a setup guide for SonarQube in production using MySQL as DB.
 ### Initial Setup
  1. On hosting server
      1. Start MySQL container:
-     ```
+     ```sh
      docker run --name sonardb -p 3306:3306 -e MYSQL_ROOT_PASSWORD=sonar -e MYSQL_DATABASE=sonar -e MYSQL_USER=sonar -e MYSQL_PASSWORD=sonar -d mysql:5.6
      ```
      
      2. Check status:
-     ```
+     ```sh
      docker logs -f sonardb
      ```
      Wait until you see "MySQL init process done. Ready for start up." in the log.
      
      3. Start SonarQube container linked to MySQL:
-     ```
+     ```sh
      docker run --name sonarqube --link sonardb:mysql -p 9000:9000 -e SONARQUBE_JDBC_USERNAME=sonar -e SONARQUBE_JDBC_PASSWORD=sonar -e SONARQUBE_JDBC_URL="jdbc:mysql://mysql:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance" -v opt/sonarqube/extensions/plugins:/opt/sonarqube/extensions/plugins -d sonarqube:5.1.1
      ```
      
      4.  Check status:
-     ```
+     ```sh
      docker logs -f sonarqube
      ```
      Wait until you see "Process[web] is up" in the log.
@@ -53,7 +53,7 @@ This is a setup guide for SonarQube in production using MySQL as DB.
 ### Backup and Restore
 #### Back Up DB Data
 On host server, first run below command
-```
+```sh
 mysqldump --host=localhost --port=3306 --protocol TCP -u sonar -p sonar --single-transaction --databases sonar > sonardb_backup-<date>.sql
 (password: sonar)
 ```
@@ -69,7 +69,7 @@ Back up folder/directory:
 #### Restore DB Data
 On host server, navigate to folder/directory where DB backup file is stored.
 Then, run below command
-```
+```sh
 mysql --host=localhost --port=3306 --protocol TCP -u sonar -p sonar < backup_file.sql
 (password: sonar)
 ```
