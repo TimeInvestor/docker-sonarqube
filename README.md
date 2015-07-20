@@ -21,7 +21,7 @@ This is a setup guide for SonarQube in production using MySQL as DB.
  1. On hosting server
      1. Start MySQL container:
      ```sh
-     docker run --name sonardb -p 3306:3306 -e MYSQL_ROOT_PASSWORD=sonar -e MYSQL_DATABASE=sonar -e MYSQL_USER=sonar -e MYSQL_PASSWORD=sonar -d mysql:5.6
+     docker run --name sonardb -p 3306:3306 -v /opt/sonarqube/data/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=sonar -e MYSQL_DATABASE=sonar -e MYSQL_USER=sonar -e MYSQL_PASSWORD=sonar -d mysql:5.6
      ```
      
      2. Check status:
