@@ -76,3 +76,18 @@ mysql --host=localhost --port=3306 --protocol TCP -u sonar -p sonar < backup_fil
    
 #### Restore others
 Put back backup folders/directories.
+
+### Jenkins Integration
+Refer: http://docs.sonarqube.org/display/PLUG/Jenkins+Plugin
+
+#### Install Plugin on Jenkins
+Refer: https://wiki.jenkins-ci.org/display/JENKINS/Plugins#Plugins-Howtoinstallplugins
+
+#### Config Sonar Jenkins plugin
+Refer: http://docs.sonarqube.org/display/PLUG/Configuring+Jenkins+SonarQube+Plugin
+
+**Only need to config below parameters, the rest can leave as default**
+- Server URL
+  `http://<hostname or ip>:9000`
+- Database URL
+ `jdbc:mysql://jenkins.visenze.com:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance`
