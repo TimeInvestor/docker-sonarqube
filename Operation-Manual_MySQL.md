@@ -66,7 +66,7 @@ Back up folder/directory:
  - /opt/sonarqube/extensions/plugins
 
 #### Restore
-#### Restore DB Data
+##### Restore DB Data
 On host server, navigate to folder/directory where DB backup file is stored.
 Then, run below command
 ```sh
@@ -74,7 +74,7 @@ mysql --host=localhost --port=3306 --protocol TCP -u sonar -p sonar < backup_fil
 (password: sonar)
 ```
    
-#### Restore others
+##### Restore others
 Put back backup folders/directories.
 
 ### Jenkins Integration
