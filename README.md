@@ -90,4 +90,4 @@ Refer: http://docs.sonarqube.org/display/PLUG/Configuring+Jenkins+SonarQube+Plug
 - Server URL
   `http://<hostname or ip>:9000`
 - Database URL
- `jdbc:mysql://jenkins.visenze.com:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance`
+ `jdbc:mysql://<jenkins>:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance`
