@@ -1,4 +1,4 @@
-FROM java:openjdk-8u45-jre
+FROM java:openjdk-8u45-jdk
 
 MAINTAINER David Gageot <david.gageot@sonarsource.com>
 
@@ -26,13 +26,15 @@ RUN gpg --keyserver ha.pool.sks-keyservers.net --recv-keys F19F217FA669DEFA9E514
 
 RUN set -x \
 	&& cd /opt \
-	&& curl -o sonarqube.zip -fSL http://dist.sonar.codehaus.org/sonarqube-$SONAR_VERSION.zip \
-	&& curl -o sonarqube.zip.asc -fSL http://dist.sonar.codehaus.org/sonarqube-$SONAR_VERSION.zip.asc \
+	&& curl -o sonarqube.zip -fSL http://downloads.sonarsource.com/sonarqube/sonarqube-$SONAR_VERSION.zip \
+	&& curl -o sonarqube.zip.asc -fSL http://downloads.sonarsource.com/sonarqube/sonarqube-$SONAR_VERSION.zip.asc \
 	&& gpg --verify sonarqube.zip.asc \
 	&& unzip sonarqube.zip \
 	&& mv sonarqube-$SONAR_VERSION sonarqube \
 	&& rm sonarqube.zip* \
 	&& rm -rf $SONARQUBE_HOME/bin/*
+
+VOLUME ["$SONARQUBE_HOME/data", "$SONARQUBE_HOME/extensions"]
 
 WORKDIR $SONARQUBE_HOME
 COPY run.sh $SONARQUBE_HOME/bin/
