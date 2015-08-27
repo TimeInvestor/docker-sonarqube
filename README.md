@@ -32,7 +32,7 @@ This is a setup guide for SonarQube in production using MySQL as DB.
      
      3. Start SonarQube container linked to MySQL:
      ```sh
-     docker run --name sonarqube --link sonardb:mysql -p 9000:9000 -e SONARQUBE_JDBC_USERNAME=sonar -e SONARQUBE_JDBC_PASSWORD=sonar -e SONARQUBE_JDBC_URL="jdbc:mysql://mysql:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance" -v /opt/sonarqube/extensions/plugins:/opt/sonarqube/extensions/plugins -d sonarqube:5.1.1
+     docker run --name sonarqube --link sonardb:mysql -p 9000:9000 -e SONARQUBE_JDBC_USERNAME=sonar -e SONARQUBE_JDBC_PASSWORD=sonar -e SONARQUBE_JDBC_URL="jdbc:mysql://mysql:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance" -v /opt/sonarqube/extensions/plugins:/opt/sonarqube/extensions/plugins -d sonarqube:5.1.2
      ```
      
      4.  Check status:
